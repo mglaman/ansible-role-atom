@@ -1,0 +1,24 @@
+---
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+# This freaks out for some reason during provisioning.
+# - name: Installing Atom packages
+#   shell: "apm install {{ item }} --production --silent"
+#   with_items: atom_packages_packages
+
+- name: Ensure user Atom directory
+  file: path=/home/{{ kit_ui_user }}/.atom state=directory owner={{ kit_ui_user }} group={{ kit_ui_user }}
+
+- name: Copy project manager config
+  copy: src=projects.cson dest=/home/{{kit_user}}/.atom/projects.cson mode=0644 owner={{ kit_ui_user }} group={{ kit_ui_user }}
+
+- name: Setup desktop icons
+  shell: cp /usr/share/applications/{{ item }} /home/{{ kit_ui_user }}/Desktop; chmod +x /home/{{ kit_ui_user }}/Desktop/{{ item }};
+  with_items:
+    - atom.desktop
+  sudo: yes
+  sudo_user: "{{ kit_ui_user }}"
