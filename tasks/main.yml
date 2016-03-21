@@ -20,6 +20,5 @@
   shell: cp /usr/share/applications/{{ item }} /home/{{ atom_user }}/Desktop; chmod +x /home/{{ atom_user }}/Desktop/{{ item }};
   with_items:
     - atom.desktop
-  sudo: yes
-  sudo_user: "{{ atom_user }}"
+  become: "{{ atom_user }}"
   when: "{{ atom_desktop_icon }}"
