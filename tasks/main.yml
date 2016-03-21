@@ -22,3 +22,4 @@
     - atom.desktop
   sudo: yes
   sudo_user: "{{ atom_user }}"
+  when: "{{ atom_desktop_icon }}"

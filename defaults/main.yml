@@ -5,3 +5,4 @@ atom_deb_platform : 'amd64'
 atom_rpm_platform : 'x86_64'
 atom_packages_packages: [ ]
 atom_user: 'root'
+atom_desktop_icon: false
