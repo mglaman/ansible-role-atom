@@ -1,4 +1,4 @@
-mglaman.atom
+mglaman.atom [![Build Status](https://travis-ci.org/mglaman/ansible-role-atom.svg?branch=master)](https://travis-ci.org/mglaman/ansible-role-atom)
 =========
 
 Support for Atom editor and Atom Package Manager via Ansible.

@@ -11,14 +11,14 @@
 #   with_items: atom_packages_packages
 
 - name: Ensure user Atom directory
-  file: path=/home/{{ kit_ui_user }}/.atom state=directory owner={{ kit_ui_user }} group={{ kit_ui_user }}
+  file: path=/home/{{ atom_user }}/.atom state=directory owner={{ atom_user }} group={{ atom_user }}
 
 - name: Copy project manager config
-  copy: src=projects.cson dest=/home/{{kit_user}}/.atom/projects.cson mode=0644 owner={{ kit_ui_user }} group={{ kit_ui_user }}
+  copy: src=projects.cson dest=/home/{{ atom_user }}/.atom/projects.cson mode=0644 owner={{ atom_user }} group={{ atom_user }}
 
 - name: Setup desktop icons
-  shell: cp /usr/share/applications/{{ item }} /home/{{ kit_ui_user }}/Desktop; chmod +x /home/{{ kit_ui_user }}/Desktop/{{ item }};
+  shell: cp /usr/share/applications/{{ item }} /home/{{ atom_user }}/Desktop; chmod +x /home/{{ atom_user }}/Desktop/{{ item }};
   with_items:
     - atom.desktop
   sudo: yes
-  sudo_user: "{{ kit_ui_user }}"
+  sudo_user: "{{ atom_user }}"
