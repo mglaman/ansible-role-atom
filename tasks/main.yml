@@ -5,11 +5,6 @@
 - include: RedHat.yml
   when: ansible_os_family == 'RedHat'
 
-# This freaks out for some reason during provisioning.
-# - name: Installing Atom packages
-#   shell: "apm install {{ item }} --production --silent"
-#   with_items: atom_packages_packages
-
 - name: Ensure user Atom directory
   file: path=/home/{{ atom_user }}/.atom state=directory owner={{ atom_user }} group={{ atom_user }}
 
@@ -22,3 +17,8 @@
     - atom.desktop
   become: "{{ atom_user }}"
   when: "{{ atom_desktop_icon }}"
+
+- name: Installing Atom packages
+  shell: "apm install {{ item }} --production --silent"
+  with_items: "{{ atom_packages }}"
+  become: "{{ atom_user }}"
