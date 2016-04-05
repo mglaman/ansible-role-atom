@@ -16,7 +16,7 @@ atom_ver : '1.2.3'
 atom_mirror : 'https://github.com/atom/atom/releases/download'
 atom_deb_platform : 'amd64'
 atom_rpm_platform : 'x86_64'
-atom_packages_packages: [ ]
+atom_packages: [ ]
 ````
 
 Example Playbook
