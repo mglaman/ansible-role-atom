@@ -3,3 +3,7 @@
   remote_user: root
   roles:
     - ansible-role-atom
+  vars:
+    atom_packages:
+      - emmet
+      - travis-ci-status
