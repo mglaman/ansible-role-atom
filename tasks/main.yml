@@ -15,10 +15,10 @@
   shell: cp /usr/share/applications/{{ item }} /home/{{ atom_user }}/Desktop; chmod +x /home/{{ atom_user }}/Desktop/{{ item }};
   with_items:
     - atom.desktop
-  become: "{{ atom_user }}"
+  become_user: "{{ atom_user }}"
   when: "{{ atom_desktop_icon }}"
 
 - name: Installing Atom packages
   shell: "apm install {{ item }} --production --silent"
   with_items: "{{ atom_packages }}"
-  become: "{{ atom_user }}"
+  become_user: "{{ atom_user }}"
